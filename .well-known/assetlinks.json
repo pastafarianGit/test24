@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.phonegap.voyo",
+      "sha256_cert_fingerprints":
+        ["9E:C4:41:53:48:DE:A8:0E:E2:F3:C3:BD:DB:CE:0B:03:75:FF:20:7C:CD:07:54:59:07:15:34:9E:B1:9B:22:65"]
+    }
+  }
+]
