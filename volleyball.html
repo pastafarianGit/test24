@@ -1,0 +1,104 @@
+<html>
+<head>
+<style>
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'menu main main main right right'
+    'menu footer footer footer footer footer';
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+</style>
+</head>
+<body>
+
+<div class="grid-container">
+  <div class="item1">
+  	  <video width="420" height="340" autoplay loop muted>
+		<source src="nina_clip.mp4" type="video/mp4">
+	 </video>
+	  <video width="420" height="340" autoplay loop muted>
+		<source src="aljosa_clip.mp4" type="video/mp4">
+	 </video>
+	 <video width="420" height="340" autoplay loop muted>
+		<source src="sara_clip.mp4" type="video/mp4">
+	 </video>
+  </div>
+  <div class="item2">  
+	  <video width="320" height="440" autoplay loop muted>
+		<source src="aljaz_clip.mp4" type="video/mp4">
+	 </video>
+	 <video width="320" height="440" autoplay loop muted>
+		<source src="mark_clip.mp4" type="video/mp4">
+	 </video>
+ </div>
+  <div id="demo" class="item3"> 
+		 
+  </div>  
+  <div class="item4">
+  	  <video width="320" height="440" autoplay loop muted>
+		<source src="nives_clip.mp4" type="video/mp4">
+	 </video>
+  </div>
+  
+  <div class="item5">
+
+  </div>
+</div>
+
+</body>
+
+<script>
+window.onload = function() {
+
+	// Set the date we're counting down to
+	var countDownDate = new Date("Sep 10, 2023 19:00:00").getTime();
+
+	// Update the count down every 1 second
+	var x = setInterval(function() {
+
+	  // Get today's date and time
+	  var now = new Date().getTime();
+
+	  // Find the distance between now and the count down date
+	  var distance = countDownDate - now;
+
+	  // Time calculations for days, hours, minutes and seconds
+	  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+	  // Display the result in the element with id="demo"
+	  document.getElementById("demo").innerHTML ="čas do odbojke: " + days + "d " + hours + "h "
+	  + minutes + "m " + seconds + "s ";
+
+	  // If the count down is finished, write some text
+	  if (distance < 0) {
+		clearInterval(x);
+		document.getElementById("demo").innerHTML = "EXPIRED";
+	  }
+	}, 1000);
+}
+</script>
+
+</html>
+
+
+
