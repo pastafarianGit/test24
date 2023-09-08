@@ -24,41 +24,91 @@
   padding: 20px 0;
   font-size: 30px;
 }
+
+#demo {
+	font-size: 64px;
+	font-weight: bold;
+	animation: rainbow 2s infinite;
+}
+
+@keyframes rainbow {
+	0% { color: red; }
+	14% { color: orange; }
+	28% { color: yellow; }
+	42% { color: green; }
+	57% { color: blue; }
+	71% { color: indigo; }
+	85% { color: violet; }
+	100% { color: red; }
+}
+
+body {
+		margin: 0;
+		overflow: hidden;
+		background-color: #000; /* Set the background color of the page */
+	}
+
+	.firework {
+		position: absolute;
+		width: 30px; /* Increase the size of the fireworks */
+		height: 30px; /* Increase the size of the fireworks */
+		border-radius: 50%;
+		background: radial-gradient(circle, #FFD700, transparent); /* Use a radial gradient for a colorful effect */
+		opacity: 0;
+		animation: explode 1s ease-out, fadeOut 1s ease-in 1s forwards;
+	}
+
+	@keyframes explode {
+		0% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		100% {
+			transform: scale(10);
+			opacity: 0;
+		}
+	}
+
+	@keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+
 </style>
 </head>
 <body>
 
 <div class="grid-container">
   <div class="item1">
-  	  <video width="420" height="340" autoplay loop muted>
+  	  <video width="320" height="440" autoplay loop muted>
 		<source src="nina_clip.mp4" type="video/mp4">
 	 </video>
-	  <video width="420" height="340" autoplay loop muted>
+	  <video width="320" height="440" autoplay loop muted>
 		<source src="aljosa_clip.mp4" type="video/mp4">
 	 </video>
-	 <video width="420" height="340" autoplay loop muted>
+	 <video width="320" height="440" autoplay loop muted>
 		<source src="sara_clip.mp4" type="video/mp4">
+	 </video>
+	 <video width="320" height="440" autoplay loop muted>
+		<source src="mark_clip.mp4" type="video/mp4">
 	 </video>
   </div>
   <div class="item2">  
 	  <video width="320" height="440" autoplay loop muted>
 		<source src="aljaz_clip.mp4" type="video/mp4">
 	 </video>
-	 <video width="320" height="440" autoplay loop muted>
-		<source src="mark_clip.mp4" type="video/mp4">
-	 </video>
  </div>
-  <div id="demo" class="item3"> 
-		 
+  <div class="item3"> 
+		 <p id="demo"> </p>
   </div>  
   <div class="item4">
   	  <video width="320" height="440" autoplay loop muted>
 		<source src="nives_clip.mp4" type="video/mp4">
 	 </video>
-  </div>
-  
-  <div class="item5">
-
   </div>
 </div>
 
@@ -86,7 +136,11 @@ window.onload = function() {
 	  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 	  // Display the result in the element with id="demo"
-	  document.getElementById("demo").innerHTML ="čas do odbojke: " + days + "d " + hours + "h "
+	  var paragraphElement = document.getElementById("demo");
+		
+	  /*document.getElementById("demo").text ="soon again " + days + "d " + hours + "h "
+	  + minutes + "m " + seconds + "s ";*/
+	  paragraphElement.textContent = "soon again " + days + "d " + hours + "h "
 	  + minutes + "m " + seconds + "s ";
 
 	  // If the count down is finished, write some text
@@ -96,9 +150,35 @@ window.onload = function() {
 	  }
 	}, 1000);
 }
+
+function createFirework() {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+
+            // Randomly position the firework on the page
+            const maxX = window.innerWidth;
+            const maxY = window.innerHeight;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            firework.style.left = randomX + 'px';
+            firework.style.top = randomY + 'px';
+
+            // Add the firework to the page
+            document.body.appendChild(firework);
+
+            // Make the firework disappear after a short delay
+            setTimeout(() => {
+                firework.style.opacity = '0';
+                setTimeout(() => {
+                    firework.remove();
+                }, 100);
+            }, 200);
+        }
+
+        // Create fireworks at random intervals
+        setInterval(createFirework, 100);
+		
+		
 </script>
 
 </html>
-
-
-
